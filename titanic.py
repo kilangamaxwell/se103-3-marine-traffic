@@ -9,6 +9,7 @@ def run_help():
   print("help")
   print("show_countries")
   print("top_countries <num_countries>")
+  print("ship_by_types")
   print()
   commands()
 
@@ -22,6 +23,22 @@ def show_countries():
   for country in sorted_countries:
     print(country)
   print()
+  commands()
+
+
+def ships_by_types():
+  """Displays the number of ships for each type of ship."""
+  all_types = set()
+  ships_types_dict = {}
+  for ships in all_data['data']:
+    all_types.add(ships['TYPE_SUMMARY'])
+    for ship_type in all_types:
+      if ship_type not in ships_types_dict:
+        ships_types_dict[ship_type] = 1
+      else:
+        ships_types_dict[ship_type] += 1
+  for ship_type in ships_types_dict:
+    print(f"{ship_type}: {ships_types_dict[ship_type]}")
   commands()
 
 
@@ -62,7 +79,8 @@ def show_top_countries(num_countries):
 func_dict = {
   "help" : run_help,
   "show_countries" : show_countries,
-  "top_countries" : show_top_countries
+  "top_countries" : show_top_countries,
+  "ship_by_types" : ships_by_types
 }
 
 
