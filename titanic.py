@@ -10,6 +10,7 @@ def run_help():
   print("show_countries")
   print("top_countries <num_countries>")
   print("ship_by_types")
+  print("search_ship")
   print()
   commands()
 
@@ -23,6 +24,14 @@ def show_countries():
   for country in sorted_countries:
     print(country)
   print()
+  commands()
+
+
+def search_ship():
+  shipname = input("Enter the ship's full or partial name: ").upper()
+  for ships in all_data['data']:
+    if ships['SHIPNAME'] == shipname or ships['SHIPNAME'].__contains__(shipname):
+      print(ships['SHIPNAME'])
   commands()
 
 
@@ -80,7 +89,8 @@ func_dict = {
   "help" : run_help,
   "show_countries" : show_countries,
   "top_countries" : show_top_countries,
-  "ship_by_types" : ships_by_types
+  "ship_by_types" : ships_by_types,
+  "search_ship" : search_ship
 }
 
 
